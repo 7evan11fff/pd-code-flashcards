@@ -3,6 +3,30 @@
 // Note: meanings vary by agency. This is the APCO / common-set reference list.
 
 const DATA = {
+  "starter": {
+    label: "Starter (Top 15)",
+    description: "The 15 most-used codes you'll hear on real scanner traffic. Start here.",
+    highlight: true,
+    excludeFromAll: true,
+    cards: [
+      { code: "10-4",  meaning: "Acknowledgment (OK)",       notes: "Most famous code in radio history." },
+      { code: "10-7",  meaning: "Out of service",            notes: "Off duty / fueling / unavailable." },
+      { code: "10-8",  meaning: "In service",                notes: "Available for calls." },
+      { code: "10-9",  meaning: "Repeat",                    notes: "\"Say again.\"" },
+      { code: "10-20", meaning: "Location",                  notes: "\"What's your 20?\"" },
+      { code: "10-22", meaning: "Disregard",                 notes: "Cancel the assignment." },
+      { code: "10-23", meaning: "Arrived at scene",          notes: "On location." },
+      { code: "10-31", meaning: "Crime in progress",         notes: "Active incident." },
+      { code: "10-32", meaning: "Man with gun",              notes: "Armed subject — high priority." },
+      { code: "10-33", meaning: "Emergency — stand by",      notes: "Clear the radio for priority traffic." },
+      { code: "10-50", meaning: "Accident (F/PI/PD)",        notes: "Fatal / Injury / Property Damage." },
+      { code: "10-76", meaning: "En-route",                  notes: "On the way." },
+      { code: "10-77", meaning: "ETA",                       notes: "Estimated time of arrival." },
+      { code: "10-78", meaning: "Need assistance",           notes: "Officer needs help." },
+      { code: "10-99", meaning: "Wanted / stolen indicated", notes: "Warrant / stolen hit confirmation." }
+    ]
+  },
+
   "10-codes": {
     label: "10-Codes",
     description: "APCO-published radio brevity codes (1940). Still dominate patrol channels.",

@@ -37,6 +37,7 @@
   function buildAllDeck() {
     const cards = [];
     for (const key of DECK_KEYS) {
+      if (DATA[key].excludeFromAll) continue;
       for (const c of DATA[key].cards) cards.push(Object.assign({ _deck: key }, c));
     }
     return { label: "All Decks", description: "Every code combined.", cards };
@@ -116,8 +117,8 @@
 
   function renderDeckChips() {
     const chips = [];
-    chips.push(chipHTML(ALL_KEY, "All"));
-    for (const k of DECK_KEYS) chips.push(chipHTML(k, DATA[k].label));
+    chips.push(chipHTML(ALL_KEY, "All", false));
+    for (const k of DECK_KEYS) chips.push(chipHTML(k, DATA[k].label, !!DATA[k].highlight));
     els.deckChips.innerHTML = chips.join("");
     els.deckChips.querySelectorAll(".chip").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -129,8 +130,10 @@
       });
     });
   }
-  function chipHTML(key, label) {
-    return `<button class="chip" data-deck="${key}">${label}</button>`;
+  function chipHTML(key, label, highlight) {
+    const cls = "chip" + (highlight ? " chip-highlight" : "");
+    const star = highlight ? '<span class="chip-star" aria-hidden="true">★</span>' : "";
+    return `<button class="${cls}" data-deck="${key}">${star}${label}</button>`;
   }
 
   function setActiveChips() {

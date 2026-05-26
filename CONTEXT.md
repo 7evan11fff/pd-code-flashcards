@@ -21,10 +21,10 @@
 
 ## Current State
 - App is complete and functional locally.
-- All ~190 cards from the source page are loaded.
-- Features done: deck switcher, direction (Code↔Meaning / Mixed), order (sequential / shuffle), filter (all / still-learning), per-card known tracking, progress bar, keyboard shortcuts, mobile responsive.
-- Initial commit `cdcef28` pushed to `origin/main` on GitHub.
-- Pending: nothing — MVP complete.
+- 214 cards loaded (15 starter + 100 ten-codes + 27 eleven-codes + 46 signals + 26 phonetic). All-deck shows 199 (starter excluded to avoid duplicates).
+- Features done: deck switcher with highlighted "Starter (Top 15)" chip, direction (Code↔Meaning / Mixed), order (sequential / shuffle), filter (all / still-learning), per-card known tracking, progress bar, keyboard shortcuts, mobile responsive.
+- Pushed to GitHub: `cdcef28` (initial) → `82ed13a` (CONTEXT URL) → starter-deck commit.
+- Pending: nothing — feature-complete for v1.
 
 ## Decisions Log
 | Date | Decision | Rationale |
@@ -34,8 +34,10 @@
 | 2026-05-26 | Deterministic shuffle (seeded LCG) | Shuffle order stays stable within a session so Prev/Next works predictably; new seed only on explicit re-shuffle. |
 | 2026-05-26 | Mixed mode uses hash of card id | Per-card front/back is stable across navigations, so reviewing the same card doesn't randomly flip semantics. |
 | 2026-05-26 | Single combined "All" deck | Lets users study across categories without manual merging. |
+| 2026-05-26 | "Starter (Top 15)" curated deck with `highlight` + `excludeFromAll` flags | User asked for a guided starting point; flagging keeps the data declarative — `app.js` reads `highlight` to style the chip and `excludeFromAll` so combined view stays deduped. |
 
 ## Agent Activity Log
 | Date | Agent | What Changed |
 | --- | --- | --- |
 | 2026-05-26 | Claude (Opus 4.7) | Initial scaffold: created `index.html`, `styles.css`, `app.js`, `data.js`, `README.md`, `CONTEXT.md`. Loaded all codes from zipscanners reference. |
+| 2026-05-26 | Claude (Opus 4.7) | Added "Starter (Top 15)" curated deck (most-used 10-codes). Introduced declarative `highlight` and `excludeFromAll` flags in `DATA`; updated `buildAllDeck` and `chipHTML`; added amber `.chip-highlight` styling with star prefix. |
