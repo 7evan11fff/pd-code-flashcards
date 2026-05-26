@@ -5,7 +5,7 @@
 ## Project Overview
 - **Product**: Static single-page flashcard web app for memorizing US police / law-enforcement radio codes (10-codes, 11-codes, signal codes, NATO phonetic alphabet).
 - **Tech stack**: Vanilla HTML / CSS / JavaScript. No framework, no build step, no dependencies. `localStorage` for persistence.
-- **Repo**: TBD — will be pushed to GitHub on first commit (owner `7evan11fff`).
+- **Repo**: https://github.com/7evan11fff/pd-code-flashcards (public).
 - **Owner**: Evan Klein
 - **Data source**: https://www.zipscanners.com/blogs/learn/police-codes (APCO / common-set reference).
 
@@ -23,7 +23,8 @@
 - App is complete and functional locally.
 - All ~190 cards from the source page are loaded.
 - Features done: deck switcher, direction (Code↔Meaning / Mixed), order (sequential / shuffle), filter (all / still-learning), per-card known tracking, progress bar, keyboard shortcuts, mobile responsive.
-- Pending: push to GitHub.
+- Initial commit `cdcef28` pushed to `origin/main` on GitHub.
+- Pending: nothing — MVP complete.
 
 ## Decisions Log
 | Date | Decision | Rationale |
