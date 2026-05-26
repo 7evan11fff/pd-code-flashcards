@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>PD Code Flashcards</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231e6fd9'/%3E%3Ctext x='50%25' y='54%25' font-family='monospace' font-size='28' font-weight='700' text-anchor='middle' fill='white' dominant-baseline='middle'%3E10-4%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">DISPATCH</span>
+      </div>
+      <h1>PD Code Flashcards</h1>
+    </div>
+    <div class="stats">
+      <div class="stat"><span class="stat-num" id="stat-known">0</span><span class="stat-label">known</span></div>
+      <div class="stat"><span class="stat-num" id="stat-total">0</span><span class="stat-label">in deck</span></div>
+      <button id="reset-progress" class="ghost-btn" title="Reset progress for current deck">Reset</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls">
+      <div class="control-group">
+        <label>Deck</label>
+        <div class="chip-row" id="deck-chips"></div>
+      </div>
+
+      <div class="control-row">
+        <div class="control-group">
+          <label>Direction</label>
+          <div class="chip-row">
+            <button class="chip" data-direction="code">Code → Meaning</button>
+            <button class="chip" data-direction="meaning">Meaning → Code</button>
+            <button class="chip" data-direction="mixed">Mixed</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Order</label>
+          <div class="chip-row">
+            <button class="chip" data-order="sequential">Sequential</button>
+            <button class="chip" data-order="shuffle">Shuffle</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Filter</label>
+          <div class="chip-row">
+            <button class="chip" data-filter="all">All cards</button>
+            <button class="chip" data-filter="unknown">Still learning</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="study">
+      <div class="progress">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-text"><span id="pos">0</span> / <span id="len">0</span></div>
+      </div>
+
+      <div class="flashcard-wrap">
+        <button class="nav-btn nav-prev" id="btn-prev" aria-label="Previous">‹</button>
+
+        <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flip card">
+          <div class="flashcard-inner">
+            <div class="face face-front">
+              <div class="face-label" id="front-label">CODE</div>
+              <div class="face-value" id="front-value">—</div>
+              <div class="face-hint">Tap card or press Space to flip</div>
+            </div>
+            <div class="face face-back">
+              <div class="face-label" id="back-label">MEANING</div>
+              <div class="face-value" id="back-value">—</div>
+              <div class="face-notes" id="back-notes"></div>
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-btn nav-next" id="btn-next" aria-label="Next">›</button>
+      </div>
+
+      <div class="actions">
+        <button class="action-btn action-learning" id="btn-learning">Still learning</button>
+        <button class="action-btn action-flip" id="btn-flip">Flip</button>
+        <button class="action-btn action-known" id="btn-known">Got it</button>
+      </div>
+
+      <div class="hotkeys">
+        <kbd>Space</kbd> flip · <kbd>←</kbd> prev · <kbd>→</kbd> next · <kbd>K</kbd> known · <kbd>L</kbd> learning · <kbd>S</kbd> shuffle
+      </div>
+    </section>
+
+    <section class="empty" id="empty-state" hidden>
+      <h2>No cards in this view</h2>
+      <p>Switch to <button class="link-btn" id="empty-switch">All cards</button> or reset progress to keep studying.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Source: <a href="https://www.zipscanners.com/blogs/learn/police-codes" target="_blank" rel="noopener">zipscanners.com</a></span>
+    <span>Codes vary by agency. Use as a study reference.</span>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
